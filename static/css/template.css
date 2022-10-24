@@ -1,0 +1,32 @@
+/* 整體*/
+html {
+    background: #365152;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #324c4d, #41444e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #485670, #355343); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    
+
+}
+body {
+    margin: auto;
+    max-width: 580px;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* 頁腳*/
+footer {
+    color: #888;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px;
+}
+.center{
+    text-align: center;
+}
+.container{
+    font-size: 8px;
+    text-align: right;
+    padding: 10px;
+
+}
