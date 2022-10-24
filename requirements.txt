@@ -1,3 +1,2 @@
 Flask
-render_template
 gunicorn
