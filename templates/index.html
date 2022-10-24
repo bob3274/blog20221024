@@ -2,13 +2,30 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我是大沛澐</title>
   <link rel="icon" href="{{ url_for('static', filename='img/logo.ico') }}">
 </head>
 <body>
+        
   <h1>大沛澐是我</h1>
   <p>hi</p>
+  <hr/>
+  <h2>
+    <div class="container">
+       現在時間：{% include 'weather.html' %}
+    </div>
+  </h2>
+  {% if name == "" %}
+  <form method="post">
+	<input type="text" name="user">
+	<input type="submit" name="send" value="送出">
+  </form>
+  {% else %}
+  <p>你好,{{name}}</p>  
+  {% endif %}
+
 
 </body>
 </html>
