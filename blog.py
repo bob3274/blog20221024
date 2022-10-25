@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect
+from json import load, dump
 
 app = Flask(__name__)
 
@@ -13,6 +14,10 @@ def index():
 
 @app.route("/introduce", methods=['POST', 'GET'])
 def introduce():
+    with open("people.json") as f:
+        people = load(f) + 1
+        with open("people.json", "w") as f:
+            dump(people, f)
     if request.method == 'POST':
         if request.values['send'] == '送出':
             i = request.values.get('code')
@@ -24,7 +29,7 @@ def introduce():
                 i = str(a) + str(b) + c + d
                 return render_template('introduce.html', verification=i)
 
-    return render_template("introduce.html", verification="")
+    return render_template("introduce.html", verification="", people=str(people))
 
 
 @app.route("/project")
