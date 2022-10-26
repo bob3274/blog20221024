@@ -4,29 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>我是大沛澐</title>
+  <title>首頁</title>
   <link rel="icon" href="{{ url_for('static', filename='img/logo.ico') }}">
   <link rel="stylesheet" href="{{ url_for('static',    filename='css/template.css') }}">  
 </head>
 <body>
-
-
-  <h1>大沛澐是我</h1>
+  <h1>無</h1>
   <p>hi</p>
   <hr/>
-  {% if name == "" %}
-  <form method="post">
-	<input type="text" name="user">
-	<input type="submit" name="send" value="送出">
-  </form>
-  {% else %}
-  <p style="font-size: 30px;color: rgb(255, 255, 255);">我是,<u>{{name}}</u>,大家好</p>  
-  {% endif %}
 
-  <hr/>
-  <p><a href = "introduce">自我介紹</a></p>
-    <div class="container">
-       現在時間：{% include 'weather.html' %}
-    </div>
 </body>
 </html>

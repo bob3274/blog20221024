@@ -1,7 +1,18 @@
+from calendar import week
 from flask import Flask, render_template, request, url_for, redirect
 from json import load, dump
+import time
 
 app = Flask(__name__)
+
+#date = time.strftime("%Y/%m/%d %H:%M", time.localtime())
+with open("people.json") as f:
+    aday = load(f)
+    if time.strftime("%a", time.localtime()) != aday["week"]:
+        aday["today"] = 0
+        aday["week"] = time.strftime("%a", time.localtime())
+        with open("people.json", "w") as f:
+            dump(aday, f)
 
 
 @app.route("/", methods=['POST', 'GET'])
@@ -15,7 +26,9 @@ def index():
 @app.route("/introduce", methods=['POST', 'GET'])
 def introduce():
     with open("people.json") as f:
-        people = load(f) + 1
+        people = load(f)
+        people["today"] += 1
+        people["total"] += 1
         with open("people.json", "w") as f:
             dump(people, f)
     if request.method == 'POST':
@@ -27,9 +40,9 @@ def introduce():
                 c = chr(int(ord(i[8]) * 4 / 6 + 25))  # 65~90
                 d = chr(int(ord(i[9]) * 1.5 / 1.3 - 17))  # 100~120
                 i = str(a) + str(b) + c + d
-                return render_template('introduce.html', verification=i)
+                return render_template('introduce.html', verification=i, today=str(people["today"]), total=str(people["total"]))
 
-    return render_template("introduce.html", verification="", people=str(people))
+    return render_template("introduce.html", verification="", today=str(people["today"]), total=str(people["total"]))
 
 
 @app.route("/project")
